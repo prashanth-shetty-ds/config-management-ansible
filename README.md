@@ -32,6 +32,14 @@ This repository manages:
 This repository implements the automation model defined in the
 `sre-platform-lab` repository and is consumed by platform operators.
 
+## Change Safety
+
+All playbooks are designed to support:
+- `--check` (dry-run mode)
+- `--diff` for configuration visibility
+
+Operators are encouraged to preview changes before applying them in production.
+
 ## Author
 Prashanth Shetty  
 Senior Cloud / SRE Engineer

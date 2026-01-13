@@ -1,0 +1,19 @@
+---
+- name: Validate baseline configuration
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Verify SSH root login is disabled
+      command: sshd -T
+      register: sshd_config
+      changed_when: false
+
+    - name: Assert root login is disabled
+      assert:
+        that:
+          - "'permitrootlogin no' in sshd_config.stdout"
+
+    - name: Verify NTP is synchronized
+      command: chronyc tracking
+      changed_when: false

@@ -8,4 +8,14 @@
     - ntp
     - logging
     - cis-linux
+  pre_tasks:
+  - name: Validate target OS is supported
+    assert:
+      that:
+        - ansible_os_family in ["RedHat", "Debian"]
+      fail_msg: "Unsupported OS for baseline configuration"
+
+  - name: Validate privilege escalation
+    command: whoami
+    changed_when: false
     
