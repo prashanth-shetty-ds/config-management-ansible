@@ -1,3 +1,6 @@
 ntp_servers:
   - 0.pool.ntp.org
   - 1.pool.ntp.org
+logging_remote_servers:
+  - log01.prod.internal:514
+  - log02.prod.internal:514

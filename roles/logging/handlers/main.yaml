@@ -1,0 +1,5 @@
+---
+- name: Reload logging service
+  service:
+    name: "{{ logging_service }}"
+    state: reloaded
