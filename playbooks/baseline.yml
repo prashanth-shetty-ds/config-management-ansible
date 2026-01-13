@@ -7,4 +7,5 @@
     - ssh-hardening
     - ntp
     - logging
+    - cis-linux
     
