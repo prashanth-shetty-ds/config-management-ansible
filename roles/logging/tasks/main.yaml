@@ -1,0 +1,20 @@
+---
+- name: Ensure logging service is installed
+  package:
+    name: "{{ logging_service }}"
+    state: present
+
+- name: Configure log forwarding
+  template:
+    src: forwarding.conf.j2
+    dest: "{{ logging_config_file }}"
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Reload logging service
+
+- name: Ensure logging service is enabled and running
+  service:
+    name: "{{ logging_service }}"
+    state: started
+    enabled: true

@@ -1,3 +1,6 @@
 ntp_servers:
   - ntp1.company.internal
   - ntp2.company.internal
+logging_remote_servers:
+  - log01.prod.internal:514
+  - log02.prod.internal:514
