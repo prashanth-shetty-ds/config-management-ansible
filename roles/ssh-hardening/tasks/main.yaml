@@ -1,0 +1,11 @@
+---
+- name: Configure SSH security settings
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: "^{{ item.key }}"
+    line: "{{ item.key }} {{ item.value }}"
+    validate: "/usr/sbin/sshd -t -f %s"
+  loop:
+    - { key: "PermitRootLogin", value: "{{ ssh_permit_root_login }}" }
+    - { key: "PassowrdAuthentication", value: "{{ ssh_password_authentication}}" }
+  notify: Restart SSH

@@ -1,0 +1,9 @@
+---
+- name: Set system timezone
+  timezone: 
+    name: "{{ common_timezone }}"
+
+- name: Ensure base packages are installed
+  packages: 
+    name: "{{ common_package }}"
+    state: present
