@@ -1,0 +1,32 @@
+# This playbook applies patches incrementally to limit blast radius.
+# serial ensures only a subset of hosts are patched at a time.
+# max_fail_percentage prevents widespread failure during rollout.
+
+---
+- name: Apply OS patches in a controlled manner
+  hosts: all
+  become: true
+  serial: "{{ ansible_serial_percentage | default('20%') }}"
+  max_fail_percentage: 10
+
+  pre_tasks:
+    - name: Verify system uptime before patching
+      command: uptime
+      changed_when: false
+
+  tasks:
+    - name: Apply OS updates
+      package:
+        name: "*"
+        state: latest
+
+  post_tasks:
+    - name: Check if reboot is required
+      stat:
+        path: /var/run/reboot-required
+      register: reboot_required
+
+    - name: Notify reboot requirement
+      debug:
+        msg: "Reboot required on {{ inventory_hostname }}"
+      when: reboot_required.stat.exists
