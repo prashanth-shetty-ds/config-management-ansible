@@ -4,3 +4,4 @@ ntp_servers:
 logging_remote_servers:
   - log01.prod.internal:514
   - log02.prod.internal:514
+ansible_serial_percentage: 10

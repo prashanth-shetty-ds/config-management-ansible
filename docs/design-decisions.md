@@ -19,3 +19,13 @@ Separate inventories are maintained to:
 - Playbooks are designed for incremental application
 - Changes are reviewed before execution
 - Rollbacks are documented where applicable
+
+## Patching Strategy
+
+Patching is performed using controlled rollouts to:
+- Limit blast radius
+- Detect failures early
+- Allow intervention before widespread impact
+
+Serial execution and failure thresholds are used to enforce safety.
+
