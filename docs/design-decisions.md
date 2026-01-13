@@ -27,5 +27,14 @@ Patching is performed using controlled rollouts to:
 - Detect failures early
 - Allow intervention before widespread impact
 
+## Validation and Verification
+
+Automation includes validation steps to confirm:
+- Expected configuration is applied
+- Critical services remain healthy
+- Security controls are enforced
+
+This reduces reliance on manual verification and supports safer operations.
+
 Serial execution and failure thresholds are used to enforce safety.
 
