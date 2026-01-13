@@ -1,0 +1,16 @@
+---
+- name: Disable core dumps
+  sysctl:
+    name: fs.suid_dumpable
+    value: '0'
+    state: present
+    reload: yes
+  when: cis_disable_core_dumps
+
+- name: Disable IP forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: '0'
+    state: present
+    reload: yes
+  when: not cis_enable_ip_forwarding
